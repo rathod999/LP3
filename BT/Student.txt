@@ -1,0 +1,26 @@
+pragma solidity ^0.4.18;
+contract MarksMngSys{
+    struct Student{ 
+        int ID; 
+        string fname; 
+        string lname; 
+        int marks; 
+        } 
+        address owner; 
+        int public stdCount = 0; 
+        mapping(int=>Student) public stdRecords; 
+        modifier onlyOwner{ 
+            require(owner==msg.sender);
+             _; } 
+        constructor() public{
+            owner = msg.sender; 
+            } 
+        function addNewRecord(int _ID, string memory _fname, string memory _lname,int _marks) public onlyOwner{
+            stdCount = stdCount + 1; 
+            stdRecords[stdCount] = Student(_ID,_fname,_lname,_marks); 
+            }
+        function addBonus(int _bonus) public onlyOwner{ 
+            stdRecords[stdCount].marks = stdRecords[stdCount].marks + _bonus; 
+            } 
+        }
+

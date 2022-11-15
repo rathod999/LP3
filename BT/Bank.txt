@@ -1,0 +1,13 @@
+pragma solidity ^0.4.18;
+contract BankAcc{
+    uint bankbalance = 1000;
+    function deposit (uint x) public{
+        bankbalance = bankbalance + x; 
+        }
+    function withdraw (uint x) public{
+        bankbalance = bankbalance - x;
+        }
+    function showBalance () public view returns (uint){
+        return bankbalance;
+        } 
+    }
